@@ -21,4 +21,4 @@ jobs:
       with:
         webhook_id: ${{ secrets.WEBHOOK_ID }}
         webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
-        args: Running by branch ${{ github.head_ref }} 
+        args: Running by branch ${{ secrets.MY_SECRET }} 

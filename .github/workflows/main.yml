@@ -16,9 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    - name: Running a test command and getting the output
+      run: cat /etc/os-release
+      id: test-command
     - name: send custom message with args
       uses: appleboy/discord-action@master
       with:
         webhook_id: ${{ secrets.WEBHOOK_ID }}
         webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
-        args: Running by branch ${{ secrets.MY_SECRET }} 
+        args: Secret ${{ secrets.MY_SECRET }} with ${{ steps.test-command.outputs}}

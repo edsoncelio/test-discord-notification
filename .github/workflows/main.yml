@@ -25,3 +25,6 @@ jobs:
         webhook_id: ${{ secrets.WEBHOOK_ID }}
         webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
         args: Secret ${{ secrets.MY_SECRET }} with ${{ steps.test-command.outputs.TEST_COMMAND}}
+    - name: Test default envs
+      run: echo $GITHUB_EVENT_NAME $GITHUB_REF
+      

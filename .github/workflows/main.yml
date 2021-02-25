@@ -21,14 +21,14 @@ jobs:
     - name: Running a test command and getting the output
       run: echo '::set-output name=TEST_COMMAND::cat /etc/os-release'
       id: test-command
-      if: github.event_name == 'pull_request'
     - name: send custom message with args
+      if: github.event_name == 'pull_request'
       uses: appleboy/discord-action@master
       with:
         webhook_id: ${{ secrets.WEBHOOK_ID }}
         webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
         args: Secret ${{ secrets.MY_SECRET }} with ${{ steps.test-command.outputs.TEST_COMMAND}}
-      if: github.event_name == 'push'
     - name: Test default envs
+      if: github.event_name == 'push'
       run: echo "${{ env.MAIN_BRANCH }}"
       

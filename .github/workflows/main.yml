@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     env: 
       MAIN_BRANCH: $GITHUB_REF
+      ENV_BRANCH: $GITHUB_EVENT_NAME 
     steps:
     - uses: actions/checkout@master
     - name: Running a test command and getting the output
@@ -28,5 +29,5 @@ jobs:
         webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
         args: Secret ${{ secrets.MY_SECRET }} with ${{ steps.test-command.outputs.TEST_COMMAND}}
     - name: Test default envs
-      run: echo "${{ env.MAIN_BRANCH }}"
+      run: echo "branch ${{ env.MAIN_BRANCH }} event ${{ env.ENV_BRANCH}}"
       
